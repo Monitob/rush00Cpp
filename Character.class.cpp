@@ -30,8 +30,25 @@ Character & Character::operator=(Character const & rhs){
   return (*this);
 }
 
-void Character::moveUp() {
+void Character::moveRight() {
+    p_x += 1;
+    if (p_x > MAX_X)
+      p_x = MAX_X;
+    if (p_x < MIN_X)
+        p_x = MIN_X;
+    return ;
+}
+void Character::moveLeft() {
     p_x -= 1;
+    if (p_x > MAX_X)
+      p_x = MAX_X;
+    if (p_x < MIN_X)
+        p_x = MIN_X;
+    return ;
+}
+
+void Character::moveUp() {
+    p_y -= 1;
     if (p_x > MAX_X)
       p_x = MAX_X;
     if (p_x < MIN_X)
@@ -47,6 +64,7 @@ void Character::moveDown() {
     p_y = MIN_Y;
   return ;
 }
+
 
 ////GETTERS ////
 int Character::getLives() const {

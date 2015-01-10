@@ -37,6 +37,8 @@ public:
   void receiveAttack(int amount);
   void moveUp();
   void moveDown();
+  void moveRight();
+  void moveLeft();
   void attack(Character const & target);
 
 protected:
