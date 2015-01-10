@@ -1,32 +1,62 @@
-#include <iostream>
-#include "Enemy.hpp"
-
-
-Enemy::Enemy(std::string name, std::string title) : _name(name), _title(title){
-  std::cout << _name  << ", is born !" << std::endl;
-}
+#include "Enemy.class.hpp"
 
 Enemy::Enemy(){
-  _name = "NAME";
-  _title = "TITLE";
-  std::cout << _name << ", is born !" << std::endl;
-  return ;
+
+ p_x = MAX_X;
+ p_y = 10;
+ p_lives = 100;
+ dead = false;
+ visible = true;
+ _idCH = 0;
+
+}
+
+Enemy::Enemy(int posX, int posY){
+  p_x = posX;
+  p_y = posY;
+  p_lives = 100;
+  dead = false;
+  visible = true;
+  _idCH = 0;
+  this->_idCH = e_Id++;
+}
+
+Enemy::Enemy(Enemy const & src) : Character(src) {
+  *this = src;
 }
 
 Enemy::~Enemy(){
-  std::cout << _name << ". Consequences will never be the same !" << std::endl;
 }
 
-std::string Enemy::getName() const{
-  return _name;
+
+// static Enemy & Enemy::getRandomEnemy() {
+//   Enemy e = Enemy(MAX_X, (std::rand() % MAX_Y));
+//   return e;
+// }
+
+int Enemy::getIntPoints() const
+{
+  return (this->p_hitPoints);
 }
 
-Enemy & Enemy::operator=( Enemy const & rhs ){
+Enemy & Enemy::operator=(Enemy const & rhs)
+{
   if (this != &rhs)
-    _name = rhs.getName();
-    return *this;
+  {
+    p_x = rhs.getX();
+    p_y = rhs.getY();
+  }
+  return (*this);
 }
 
-std::ostream & operator<<(std::ostream & out, Enemy const f){
-    return out <<  "I am, " << f.getName() << ", and I like ponies !" << std::endl;
+int Enemy::getIdCH() const{
+  return this->_idCH;
 }
+
+std::ostream & operator<<(std::ostream & o, Enemy const & e)
+{
+  o << "Enemy Id " << e.getIdCH() << std::endl;
+  return (o);
+}
+
+int Enemy::e_Id = 0;
