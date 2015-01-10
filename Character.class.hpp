@@ -30,10 +30,13 @@ public:
   int getY() const;
   void setX(int const x);
   void setY(int const y);
+  void setDead();
   int getLives() const ;
   void move(int const x, int const y);
   void attack(Character  & target);
   void receiveAttack(int amount);
+  void moveUp();
+  void moveDown();
   void attack(Character const & target);
 
 protected:
