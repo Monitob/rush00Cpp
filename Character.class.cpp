@@ -1,14 +1,15 @@
 
+#include <iostream>
 #include "Character.class.hpp"
 
-
+//////Constructors //////
 Character::Character(): p_x(10), p_y(10), p_lives(100){
   visible = true;
   dead =  true;
-  this->_idCH = generateId();
+  _idCH = generateId();
 }
 
-Character::Character(std::string name, int x, int y): _name(name) p_x(x), p_y(y), p_lives(100){
+Character::Character(std::string name, int x, int y): _name(name), p_x(x), p_y(y), p_lives(100){
 
 }
 
@@ -16,6 +17,7 @@ Character::Character(Character const & src){
   *this = src;
 }
 
+///DESTRUCTORS//
 Character::~Character(){
 
 }
@@ -35,18 +37,13 @@ Character & Character::operator-=(Character const & rhs){
   return (*this);
 }
 
-int Character::getLives(){
+////GETTERS ////
+int Character::getLives() const {
   return p_lives;
 }
 
-void Character::receiveAttack(int amount){
-  p_lives -= amount
-  if (p_lives < 0)
-    p_lives -= amount;
-}
-
-void Character::attack(Character const & target){
-  target.receiveAttack(1);
+std::string Character::getName() const {
+  return this->_name;
 }
 
 int Character::getX() const {
@@ -57,21 +54,38 @@ int Character::getY()  const {
   return p_y;
 }
 
-void Character::setX(int x) const {
+////SETTERS////
+void Character::setX(int const x){
   p_x = x;
   if (p_x > MAX_X)
     p_x = MAX_X;
-  if (p_x < MIN_X)
-    p_x = MIN_X;
+    if (p_x < MIN_X)
+      p_x = MIN_X;
 }
 
-void Character::setY(int y){
-  p_y = y;
-  if (p_y > MAX_Y)
-    p_y = MAX_X;
-  if (p_y < MIN_Y)
-    p_y = y;
+void Character::setY(int const y) {
+      p_y = y;
+      if (p_y > MAX_Y)
+        p_y = MAX_X;
+        if (p_y < MIN_Y)
+          p_y = y;
 }
+
+void Character::receiveAttack(int amount){
+  p_lives -= amount;
+  if (p_lives < 0)
+    p_lives -= amount;
+}
+
+void Character::attack(Character  & target){
+  target.receiveAttack(1);
+}
+
+void Character::move(int const x, int const y){
+  setX(x);
+  setY(y);
+}
+
 
 int Character::getIdCh(){
   return _idCH;
@@ -79,6 +93,11 @@ int Character::getIdCh(){
 
 int Character::generateId(){
     return s_Id++;
+}
+
+std::ostream & operator<<(std::ostream  & out, Character const & f)
+{
+  return out << f.getName() << " position " << f.getX() << "/" << f.getY() << std::endl;
 }
 
 int Character::s_Id = 1;

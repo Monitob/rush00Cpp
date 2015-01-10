@@ -7,27 +7,34 @@
 #define MAX_Y 460
 #define MIN_Y 0
 
+#include <iostream>
+
+class Character {
+
 private:
   int _idCH;
   static int s_Id;
 
 public:
 
-
   Character();
-  Character(std::string name);
+  Character(std::string name, int x, int y);
   Character(Character const & src);
   ~Character();
-  Character & operator=(Character const & rhs)
+  Character & operator=(Character const & rhs);
+  Character & operator-=(Character const & rhs);
   int generateId();
+  std::string getName() const;
   int getIdCh();
-  int getX();
-  int getY();
-  void setX(int x);
-  void setY(int y);
-  void attack(Character const & target);
+  int getX() const;
+  int getY() const;
+  void setX(int const x);
+  void setY(int const y);
+  int getLives() const ;
+  void move(int const x, int const y);
+  void attack(Character  & target);
   void receiveAttack(int amount);
-
+  void attack(Character const & target);
 
 protected:
   std::string _name;
@@ -37,5 +44,8 @@ protected:
 
   bool visible;
   bool dead;
+};
+
+std::ostream & operator<<(std::ostream  & out, Character const & f);
 
 #endif
