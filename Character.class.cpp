@@ -31,7 +31,7 @@ Character & Character::operator=(Character const & rhs){
 }
 
 void Character::moveUp() {
-    p_x += 1;
+    p_x -= 1;
     if (p_x > MAX_X)
       p_x = MAX_X;
     if (p_x < MIN_X)
@@ -40,7 +40,7 @@ void Character::moveUp() {
 }
 
 void Character::moveDown() {
-  p_y -= 1;
+  p_y += 1;
   if (p_y < MIN_X)
     p_x = MIN_X;
   if (p_y < MIN_Y)
