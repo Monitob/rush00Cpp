@@ -4,20 +4,21 @@
 # define SHIP_H
 
 #include <iostream>
+#include "missiles.class.hpp"
 
-class Ship: public Character  {
+class Ship : public Character  {
 
 private:
   Character ch;
   int shipId;
 
 public:
-
   Ship();
   Ship(std::string name, int x, int y);
   Ship(const Ship & src);
   ~Ship();
   Ship& operator=(const Ship& g);
+  Missiles shoot() const;
 
 };
 

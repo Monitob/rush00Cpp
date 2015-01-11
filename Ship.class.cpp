@@ -21,6 +21,12 @@ Ship::~Ship(){
   std::cout << "Ship destructed" << std::endl;
 }
 
+Missiles Ship::shoot() const
+{
+  Missiles m = Missiles((p_x + 1), p_y);
+  return m;
+}
+
 Ship& Ship::operator=(const Ship& g) {
   ch = g.ch;
   std::cout << "Ship::operator=()\n";

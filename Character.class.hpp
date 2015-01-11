@@ -2,9 +2,9 @@
 #ifndef CHARACTER_H
 # define CHARACTER_H
 
-#define MAX_X 620
+#define MAX_X 100
 #define MIN_X 0
-#define MAX_Y 460
+#define MAX_Y 25
 #define MIN_Y 0
 
 #include <iostream>
@@ -16,7 +16,6 @@ private:
   static int s_Id;
 
 public:
-
   Character();
   Character(std::string name, int x, int y);
   Character(Character const & src);
@@ -30,9 +29,10 @@ public:
   int getY() const;
   void setX(int const x);
   void setY(int const y);
-  void setDead();
+  void setIsDead();
+  bool isDead() const;
   void setName(std::string name);
-  int getLives() const ;
+  int getLives() const;
   void move(int const x, int const y);
   void attack(Character  & target);
   void receiveAttack(int amount);
@@ -43,13 +43,12 @@ public:
   void attack(Character const & target);
 
 protected:
-  std::string _name;
+  std::string p_name;
   int p_x;
   int p_y;
   int p_lives;
-
-  bool visible;
-  bool dead;
+  bool p_visible;
+  bool p_dead;
 };
 
 std::ostream & operator<<(std::ostream  & out, Character const & f);
