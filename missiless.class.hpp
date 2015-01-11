@@ -8,6 +8,8 @@ class Missiles {
 
 private:
   int _idCH;
+=======
+  int _id;
   static int s_Id;
 
 public:
@@ -17,6 +19,7 @@ public:
   Missiles(Missiles const & src);
   ~Missiles();
   Missiles & operator=(Missiles const & rhs);
+  Missiles & operator+=(Missiles const & rhs);
   int getX() const;
   int getY() const;
   void setX(int const x);
@@ -33,4 +36,6 @@ protected:
 
 std::ostream & operator<<(std::ostream  & out, Missiles const & f);
 
+#endif
+=======
 #endif

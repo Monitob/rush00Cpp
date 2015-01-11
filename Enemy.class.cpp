@@ -28,7 +28,6 @@ Enemy::Enemy(Enemy const & src) : Character(src) {
 Enemy::~Enemy(){
 }
 
-
 // static Enemy & Enemy::getRandomEnemy() {
 //   Enemy e = Enemy(MAX_X, (std::rand() % MAX_Y));
 //   return e;

@@ -4,11 +4,10 @@
 
 Controller::Controller()
 {
-	_name = "Shooter Game Win";
 }
 
-Controller::Controller(WINDOW * win): _win(win){
-	_name = "Shooter Game Win";
+Controller::Controller(WINDOW * win): win(win){
+
 }
 
 Controller::Controller(Controller const & src)
@@ -29,13 +28,6 @@ Controller & Controller::operator=(Controller const & rhs)
 	return (*this);
 }
 
-WINDOW * Controller::getField(){
-	return this->_win;
-}
-
-std::string Controller::getName() const{
-	return _name;
-=======
 void Controller::init_game(void)
 {
 	this->player = new Character("player", 10, 10);
@@ -94,6 +86,6 @@ void Controller::draw_char(WINDOW *win, Character const  & ship) {
 
 std::ostream & operator<<(std::ostream & o, Controller const & i)
 {
-	o << i.getName() << std::endl;
+	o << "Don't forget to change this.";
 	return (o);
 }
