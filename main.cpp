@@ -1,20 +1,21 @@
 #include <iostream>
 #include <curses.h>
-
 #include <unistd.h>
 #include "Interface.class.hpp"
 #include "Character.class.hpp"
+#include "Enemy.class.hpp"
 #include "Controller.hpp"
 
 int main() {
-    initscr();
-    Interface *inter = new Interface();
+    (void)initscr();
+  //  Interface *inter = new Interface();
     Character *batman = new Character("batman", 10, 10);
-    WINDOW * win = newwin(25 , 100, 0, 0);
+/*    WINDOW * win = newwin(25 , 100, 0, 0);
     Controller *controller = new Controller(win);
     noecho();
 
     raw();
+    std::cout << controller;
     keypad(stdscr, TRUE);
 
     inter->draw(win);
@@ -33,9 +34,6 @@ int main() {
     while(ch != 32)
     {
         //Controler.userinput
-
-
-
 
         ch = getch();
         switch(ch)
@@ -66,7 +64,6 @@ int main() {
         inter->draw(win);
         wrefresh(win);
     }
-    endwin();
+    endwin();*/
     return 0;
 }
-

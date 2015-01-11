@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERFACE_CLASS_HPP
-# define INTERFACE_CLASS_HPP
+#ifndef INTERFACE_H
+# define INTERFACE_H
 
 # include <curses.h>
 # include "Character.class.hpp"
