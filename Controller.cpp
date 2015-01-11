@@ -1,13 +1,13 @@
 #include "Controller.hpp"
 #include "curses.h"
 
-Controller::Controller(): win(win)
+Controller::Controller()
 {
-	_name = "Shooter Game";
+	_name = "Shooter Game Win";
 }
 
-Controller::Controller(WINDOW * win): win(win){
-	_name = "Shooter Game";
+Controller::Controller(WINDOW * win): _win(win){
+	_name = "Shooter Game Win";
 }
 
 Controller::Controller(Controller const & src)
@@ -28,8 +28,16 @@ Controller & Controller::operator=(Controller const & rhs)
 	return (*this);
 }
 
+WINDOW * Controller::getField(){
+	return this->_win;
+}
+
+std::string Controller::getName() const{
+	return _name;
+}
+
 std::ostream & operator<<(std::ostream & o, Controller const & i)
 {
-	o << "booting shooter Vincennes";
+	o << i.getName() << std::endl;
 	return (o);
 }

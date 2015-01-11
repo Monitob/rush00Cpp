@@ -26,8 +26,6 @@ Collision::~Collision(){
   std::cout << "Collision destructed" << std::endl;
 }
 
-
-
 ////GETTERS////
 int Collision::getX() const{
   return p_x;

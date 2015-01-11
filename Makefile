@@ -5,7 +5,7 @@ NAME = ft_retro
 
 CFLAGS =  -Wall -Wextra -Werror -l ncurses
 
-SRC =  main.cpp Character.class.cpp Collision.class.cpp Enemy.class.cpp Ship.class.cpp
+SRC =  main.cpp Character.class.cpp Collision.class.cpp Enemy.class.cpp Ship.class.cpp Interface.class.cpp Controller.cpp
 
 DEPS = Retro.class.hpp
 

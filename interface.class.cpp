@@ -15,14 +15,17 @@
 #include "Interface.class.hpp"
 #include "Character.class.hpp"
 
-Interface::Interface()
-{
-	return ;
+
+Interface::Interface(){
+	
+}
+Interface::Interface(std::string name) {
+	_name = name;
 }
 
 Interface::Interface(Interface const & src)
 {
-
+	*this = src;
 }
 
 Interface::~Interface()
@@ -30,13 +33,12 @@ Interface::~Interface()
 
 }
 
-Interface & Interface::operator=(Interface const & rhs)
-{
-if (this != &rhs)
-{
+Interface & Interface::operator=(Interface const & rhs) {
+	if (this != &rhs)
+	{
 
-}
-return (*this);
+	}
+	return (*this);
 }
 
 
@@ -51,7 +53,7 @@ void Interface::draw(WINDOW * win)
         mvwaddch(win, x, 0, 'X');
         mvwaddch(win, x, 99, 'X');
     }
-};
+}
 
 void Interface::draw_char(WINDOW *win, Character const  & ship) {
     int x;
@@ -60,12 +62,14 @@ void Interface::draw_char(WINDOW *win, Character const  & ship) {
     x = ship.getX();
     y = ship.getY();
     mvwaddch(win, y, x, '@');
-
-
 }
 
-std::ostream & operator<<(std::ostream & o, Interface const & i)
+std::string Interface::getName() const {
+	return _name;
+}
+
+std::ostream & operator<<(std::ostream & o, Interface const & f)
 {
-o << "Interface instance";
-return (o);
+	o << f.getName() << std::endl;
+	return (o);
 }

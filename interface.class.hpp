@@ -1,32 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Interface.class.hpp                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sbres <sbres@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/10 15:03:14 by sbres             #+#    #+#             */
-/*   Updated: 2015/01/10 15:12:12 by sbres            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #ifndef INTERFACE_H
-# define INTERFACE_H
+#define INTERFACE_H
 
-# include <curses.h>
-# include "Character.class.hpp"
 
-class Interface
-{
+#include <curses.h>
+#include <iostream>
+#include "Character.class.hpp"
+
+
+class Interface {
+
+private:
+  std::string _name;
+
 public:
-	Interface();
-	Interface(Interface const & src);
-	~Interface();
-	Interface & operator=( Interface const & rhs);
-	void draw(WINDOW * win);
-    void draw_char(WINDOW *win, Character const & ship);
+  Interface();
+  Interface(std::string name);
+  Interface(Interface const & src);
+  ~Interface();
+  Interface & operator=(Interface const & rhs);
+  void draw(WINDOW * win);
+  void draw_char(WINDOW *win, Character const  & ship);
+  std::string getName() const;
 };
+std::ostream & operator<<(std::ostream & o, Interface const & f);
 
-std::ostream & operator<<(std::ostream & o, Interface const & i);
-
-#endif /* INTERFACE_CLASS_HPP */
+#endif
