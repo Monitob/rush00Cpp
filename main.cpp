@@ -2,6 +2,7 @@
 #include <curses.h>
 #include <unistd.h>
 #include "Ship.class.hpp"
+#include "missiles.class.hpp"
 #include "Interface.class.hpp"
 #include "Character.class.hpp"
 #include "Enemy.class.hpp"

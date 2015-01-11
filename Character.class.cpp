@@ -4,12 +4,12 @@
 
 //////Constructors //////
 Character::Character(): p_x(10), p_y(10), p_lives(100){
-  visible = true;
-  dead =  false;
+  p_visible = true;
+  p_dead =  false;
   _idCH = generateId();
 }
 
-Character::Character(std::string name, int x, int y): _name(name), p_x(x), p_y(y), p_lives(100){
+Character::Character(std::string name, int x, int y): p_name(name), p_x(x), p_y(y), p_lives(100){
 
 }
 
@@ -24,44 +24,32 @@ Character::~Character(){
 
 Character & Character::operator=(Character const & rhs){
   if (this != &rhs){
-      p_x = rhs.getX();
-      p_y = rhs.getY();
+    p_x = rhs.getX();
+    p_y = rhs.getY();
   }
   return (*this);
 }
 
 void Character::moveRight() {
+  if ((p_x + 1) < (MAX_X - 1))
     p_x += 1;
-    if (p_x > MAX_X)
-      p_x = MAX_X;
-    if (p_x < MIN_X)
-        p_x = MIN_X;
-    return ;
+  return ;
 }
 void Character::moveLeft() {
+  if ((p_x - 1) > MIN_X)
     p_x -= 1;
-    if (p_x > MAX_X)
-      p_x = MAX_X;
-    if (p_x < MIN_X)
-        p_x = MIN_X;
-    return ;
+  return ;
 }
 
 void Character::moveUp() {
+  if ((p_y - 1) > (MIN_Y + 1))
     p_y -= 1;
-    if (p_x > MAX_X)
-      p_x = MAX_X;
-    if (p_x < MIN_X)
-        p_x = MIN_X;
-    return ;
+  return ;
 }
 
 void Character::moveDown() {
-  p_y += 1;
-  if (p_y < MIN_X)
-    p_x = MIN_X;
-  if (p_y < MIN_Y)
-    p_y = MIN_Y;
+  if ((p_y + 1) < (MAX_Y - 1))
+    p_y += 1;
   return ;
 }
 
@@ -72,7 +60,7 @@ int Character::getLives() const {
 }
 
 std::string Character::getName() const {
-  return this->_name;
+  return this->p_name;
 }
 
 int Character::getX() const {
@@ -105,11 +93,16 @@ void Character::setY(int const y) {
 }
 
 void Character::setName(std::string name){
-  _name = name;
+  p_name = name;
 }
 
-void Character::setDead(){
-  dead = true;
+void Character::setIsDead(){
+  p_dead = true;
+}
+
+bool Character::isDead()
+{
+  return p_dead;
 }
 
 void Character::receiveAttack(int amount){
