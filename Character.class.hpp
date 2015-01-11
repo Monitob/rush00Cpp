@@ -33,7 +33,6 @@ public:
   bool isDead();
   void setName(std::string name);
   int getLives() const;
-  void move(int const x, int const y);
   void attack(Character  & target);
   void receiveAttack(int amount);
   void moveUp();

@@ -14,6 +14,7 @@ class Enemy : public Character
 		Enemy(int posX, int posY);
 		Enemy & operator=(Enemy const & rhs);
 		int getPoints() const;
+		void move(int const x, int const y);
 	private:
 		int p_hitPoints;
 		int p_maxHitPoints;

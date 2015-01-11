@@ -5,38 +5,47 @@
 #include "Controller.hpp"
 #include "Character.class.hpp"
 #include "Ship.class.hpp"
+#include "Enemy.class.hpp"
 
 Controller::Controller()
 {
 	initscr();
 	noecho();
 	curs_set(FALSE);
-	_win = newwin(100 , 200, 0, 0);
+	_win = newwin(MAX_Y , MAX_X, 2, 0);
 	keypad(stdscr, TRUE);
-	mvwprintw(_win, 1, 1, "Field");
+	//mvwprintw(_win, 1, 1, "Field");
 	_name = "Shooter Game Win";
-	//box(_win, 0, 0);
-	sleep(1);
+	box(_win, 0, 0);
+	nodelay(stdscr, TRUE);
+	//sleep(1);
 	inter = new Interface;
 	player = new Ship;
 	initGame();
-
 }
 
 WINDOW* Controller::getWin(){
 	return _win;
 }
 
-
 void Controller::initGame(){
 	int endGame;
+	int timer = 0;
 
 	endGame = 42;
-	while (endGame != 81){
+	Enemy *e = new Enemy();
+	while (endGame != 113){
 		endGame = userinput();
-		inter->draw(_win);
-		inter->draw_char(_win, *player);
+		if(timer++ % 5 == 0)
+		{
+			inter->draw_char(_win, *e, ' ');
+			e->move((e->getX() - 1), e->getY());
+			if(!e->isDead())
+				inter->draw_char(_win, *e, 'X');
+		}
+		inter->draw_char(_win, *player, '@');
 		wrefresh(_win);
+		usleep(20000);
 	}
 }
 

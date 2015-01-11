@@ -1,7 +1,7 @@
 #include "Enemy.class.hpp"
 
 Enemy::Enemy(){
-  p_x = MAX_X;
+  p_x = MAX_X - 2;
   p_y = std::rand() % MAX_Y;
   p_hitPoints = 100;
   p_maxHitPoints = 100;
@@ -28,6 +28,17 @@ Enemy::~Enemy(){
 int Enemy::getPoints() const
 {
   return (this->p_hitPoints);
+}
+
+void Enemy::move(int const x, int const y)
+{
+  if (x >= 1)
+  {
+    setX(x);
+    setY(y);
+  }
+  else
+    setIsDead();
 }
 
 Enemy & Enemy::operator=(Enemy const & rhs)

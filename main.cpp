@@ -8,8 +8,8 @@
 #include "Enemy.class.hpp"
 #include "Controller.hpp"
 
-int main() {
-
+int main()
+{
   Controller();
   return 0;
 }

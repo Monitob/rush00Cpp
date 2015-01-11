@@ -42,7 +42,7 @@ void Character::moveLeft() {
 }
 
 void Character::moveUp() {
-  if ((p_y - 1) > (MIN_Y + 1))
+  if ((p_y - 1) > MIN_Y)
     p_y -= 1;
   return ;
 }
@@ -75,21 +75,18 @@ int Character::getIdCh(){
   return _idCH;
 }
 
+bool Character::isDead()
+{
+  return p_dead;
+}
+
 ////SETTERS////
 void Character::setX(int const x){
   p_x = x;
-  if (p_x > MAX_X)
-    p_x = MAX_X;
-  if (p_x < MIN_X)
-    p_x = MIN_X;
 }
 
 void Character::setY(int const y) {
-    p_y = y;
-    if (p_y > MAX_Y)
-      p_y = MAX_X;
-    if (p_y < MIN_Y)
-      p_y = MIN_Y;
+  p_y = y;
 }
 
 void Character::setName(std::string name){
@@ -100,11 +97,6 @@ void Character::setIsDead(){
   p_dead = true;
 }
 
-bool Character::isDead()
-{
-  return p_dead;
-}
-
 void Character::receiveAttack(int amount){
   p_lives -= amount;
   if (p_lives < 0)
@@ -113,11 +105,6 @@ void Character::receiveAttack(int amount){
 
 void Character::attack(Character  & target){
   target.receiveAttack(1);
-}
-
-void Character::move(int const x, int const y){
-  setX(x);
-  setY(y);
 }
 
 int Character::generateId(){

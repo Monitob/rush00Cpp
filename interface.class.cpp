@@ -13,8 +13,6 @@
 #include <curses.h>
 #include <iostream>
 #include "Interface.class.hpp"
-#include "Character.class.hpp"
-
 
 Interface::Interface(){
 
@@ -42,29 +40,8 @@ Interface & Interface::operator=(Interface const & rhs) {
 	return (*this);
 }
 
-
-void Interface::draw(WINDOW * win)
-{
-    int x;
-
-    for (x = 0; x < 100; ++x) {
-        mvwaddch(win, 1, x, '-');
-        mvwaddch(win, 24, x, '-');
-    }
-    for (x = 1; x < 24; ++x) {
-        mvwaddch(win, x, 0, '+');
-        mvwaddch(win, x, 99, '+');
-    }
-	 wrefresh(win);
-}
-
-void Interface::draw_char(WINDOW *win, Character const  & ship) {
-    int x;
-    int y;
-
-    x = ship.getX();
-    y = ship.getY();
-    mvwaddch(win, y, x, '@');
+void Interface::draw_char(WINDOW *win, Character const  & character, char c) {
+    mvwaddch(win, character.getY(), character.getX(), c);
 }
 
 std::string Interface::getName() const {
