@@ -15,6 +15,7 @@ class Controller
 
 	private:
 		WINDOW *win;
+		std::string name;
 };
 
 std::ostream & operator<<(std::ostream & o, Controller const & i);

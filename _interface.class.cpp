@@ -10,14 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <curses.h>
 #include <iostream>
 #include "Interface.class.hpp"
 #include "Character.class.hpp"
 
 Interface::Interface()
 {
-	return ;
+
 }
 
 Interface::Interface(Interface const & src)
@@ -37,6 +36,13 @@ if (this != &rhs)
 
 }
 return (*this);
+}
+
+
+std::ostream & operator<<(std::ostream & o, Interface const & i)
+{
+o << "Interface instance";
+return (o);
 }
 
 
@@ -60,12 +66,4 @@ void Interface::draw_char(WINDOW *win, Character const  & ship) {
     x = ship.getX();
     y = ship.getY();
     mvwaddch(win, y, x, '@');
-
-
-}
-
-std::ostream & operator<<(std::ostream & o, Interface const & i)
-{
-o << "Interface instance";
-return (o);
 }

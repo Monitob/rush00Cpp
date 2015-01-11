@@ -1,11 +1,11 @@
 
-CC = g++
+CPP = g++
 
 NAME = ft_retro
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS =  -l ncurses
 
-SRC =  main.cpp Retro.class.cpp
+SRC =  main.cpp Character.class.cpp Collision.class.cpp Enemy.class.cpp
 
 DEPS = Retro.class.hpp
 
@@ -14,10 +14,10 @@ OBJ = $(SRC:.cpp=.o)
 all: $(SRC) $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(SRC) -o $(NAME)  -I ./
+	$(CPP) $(CFLAGS) $(SRC) -o $(NAME)  -I ./
 
 .o: $(SRC) $(DEPS)
-	$(CC) -c $@
+	$(CPP) -c $@
 
 
 clean:
