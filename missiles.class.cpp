@@ -1,37 +1,46 @@
+#include "missiless.class.hpp"
 
-#ifndef MISSILES_H
-# define MISSILES_H
+Missiles()
+{
 
-#include <iostream>
+}
+Missiles(int x, int y)
+{
 
-class Missiles {
+}
+Missiles(Missiles const & src)
+{
 
-private:
-  int _idCH;
-  static int s_Id;
+}
+~Missiles()
+{
 
-public:
+}
+Missiles & operator=(Missiles const & rhs)
+{
 
-  Missiles();
-  Missiles(int x, int y);
-  Missiles(Missiles const & src);
-  ~Missiles();
-  Missiles & operator=(Missiles const & rhs);
-  Missiles & operator+=(Missiles const & rhs);
-  int getX() const;
-  int getY() const;
-  void setX(int const x);
-  void setY(int const y);
-  void move(int const x, int const y);
+}
+Missiles & operator+=(Missiles const & rhs)
+{
 
-protected:
-  int p_x;
-  int p_y;
+}
+int getX() const
+{
 
-  bool visible;
-  bool dead;
-};
+}
+int getY() const
+{
 
-std::ostream & operator<<(std::ostream  & out, Missiles const & f);
+}
+void setX(int const x)
+{
 
-#endif
+}
+void setY(int const y)
+{
+
+}
+void move(int const x, int const y)
+{
+
+}
