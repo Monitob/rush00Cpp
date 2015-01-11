@@ -7,7 +7,7 @@
 #include "Ship.class.hpp"
 #include "Enemy.class.hpp"
 
-Controller::Controller()
+Controller::Controller()// : missiles(new Missiles*[100])
 {
 	initscr();
 	noecho();
@@ -56,6 +56,27 @@ Controller & Controller::operator=(Controller const & rhs) {
 	}
 	return (*this);
 }
+
+// void Controller::pushMissile(Missiles *& missiles)
+// {
+// 	for (int i = 0; i < 100 ; ++i)
+// 	{
+// 		if (!missiles[i])
+// 		{
+// 			missiles[i] = missiles;
+// 			break ;
+// 		}
+// 	}
+// }
+
+// void Controller::deleteMissile(int const index)
+// {
+// 	if (missiles[index])
+// 	{
+// 		delete missiles[index];
+// 		missiles[index] = NULL;
+// 	}
+// }
 
 
 Controller::Controller(WINDOW * win): _win(win){
@@ -108,6 +129,8 @@ int Controller::userinput(void)
 			player->moveDown();
 			return 3;
 		case 32:
+			// Missiles *m = player->shoot();
+			// PushMissile(m);
 			return 4;
 		case 81:
 			return 5;

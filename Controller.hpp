@@ -6,12 +6,14 @@
 #include "Interface.class.hpp"
 #include "Character.class.hpp"
 #include "Ship.class.hpp"
+#include "missiles.class.hpp"
 
 class Controller
 {
 	public:
 		Interface * inter;
 		Ship * player;
+		Missiles **missiles;
 
 		Controller();
 		Controller(WINDOW * win);
@@ -26,6 +28,9 @@ class Controller
 
 		WINDOW* getWin();
 		void initGame();
+
+		void pushMissile(Missiles *& missiles);
+		void deleteMissile(int const index);
 
 	private:
 		WINDOW *_win;

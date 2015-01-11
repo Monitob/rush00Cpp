@@ -21,9 +21,9 @@ Ship::~Ship(){
   std::cout << "Ship destructed" << std::endl;
 }
 
-Missiles Ship::shoot() const
+Missiles * Ship::shoot()
 {
-  Missiles m = Missiles((p_x + 1), p_y);
+  Missiles *m = new Missiles((p_x + 1), p_y);
   return m;
 }
 

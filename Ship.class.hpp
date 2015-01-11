@@ -18,8 +18,7 @@ public:
   Ship(const Ship & src);
   ~Ship();
   Ship& operator=(const Ship& g);
-  Missiles shoot() const;
-
+  Missiles * shoot();
 };
 
 std::ostream & operator<<(std::ostream  & out, Ship const & f);
