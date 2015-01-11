@@ -17,8 +17,9 @@
 
 
 Interface::Interface(){
-	
+
 }
+
 Interface::Interface(std::string name) {
 	_name = name;
 }
@@ -45,14 +46,16 @@ Interface & Interface::operator=(Interface const & rhs) {
 void Interface::draw(WINDOW * win)
 {
     int x;
+
     for (x = 0; x < 100; ++x) {
-        mvwaddch(win, 1, x, 'X');
-        mvwaddch(win, 24, x, 'X');
+        mvwaddch(win, 1, x, '-');
+        mvwaddch(win, 24, x, '-');
     }
     for (x = 1; x < 24; ++x) {
-        mvwaddch(win, x, 0, 'X');
-        mvwaddch(win, x, 99, 'X');
+        mvwaddch(win, x, 0, '+');
+        mvwaddch(win, x, 99, '+');
     }
+	 wrefresh(win);
 }
 
 void Interface::draw_char(WINDOW *win, Character const  & ship) {
