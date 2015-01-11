@@ -10,6 +10,7 @@ int main() {
     (void)initscr();
   //  Interface *inter = new Interface();
     Character *batman = new Character("batman", 10, 10);
+	batman->move(4, 5);
 /*    WINDOW * win = newwin(25 , 100, 0, 0);
     Controller *controller = new Controller(win);
     noecho();

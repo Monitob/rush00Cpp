@@ -3,9 +3,9 @@ CPP = g++
 
 NAME = ft_retro
 
-CFLAGS =  -l ncurses
+CFLAGS =  -Wall -Wextra -Werror -l ncurses
 
-SRC =  main.cpp Character.class.cpp Collision.class.cpp Enemy.class.cpp
+SRC =  main.cpp Character.class.cpp Collision.class.cpp Enemy.class.cpp Ship.class.cpp
 
 DEPS = Retro.class.hpp
 
