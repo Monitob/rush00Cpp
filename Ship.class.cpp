@@ -6,7 +6,8 @@
 Ship::Ship() {
 }
 
-Ship::Ship(int x, int y){
+Ship::Ship(std::string name, int x, int y){
+  setName(name);
   setX(x);
   setY(y);
   shipId = Character::getIdCh();

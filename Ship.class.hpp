@@ -14,7 +14,7 @@ private:
 public:
 
   Ship();
-  Ship(int x, int y);
+  Ship(std::string name, int x, int y);
   Ship(const Ship & src);
   ~Ship();
   Ship& operator=(const Ship& g);

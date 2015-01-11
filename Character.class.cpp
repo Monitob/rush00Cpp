@@ -104,6 +104,10 @@ void Character::setY(int const y) {
       p_y = MIN_Y;
 }
 
+void Character::setName(std::string name){
+  _name = name;
+}
+
 void Character::setDead(){
   dead = true;
 }

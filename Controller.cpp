@@ -1,6 +1,7 @@
 #include "Controller.hpp"
 #include "curses.h"
 #include "Character.class.hpp"
+#include "Ship.class.hpp"
 
 Controller::Controller()
 {
@@ -24,22 +25,22 @@ Controller & Controller::operator=(Controller const & rhs)
 {
 	if (this != &rhs)
 	{
-		/* my implementation, don't forget to change this. */
+		player = rhs.player;
 	}
 	return (*this);
 }
 
 WINDOW * Controller::getField(){
-	return this->_win;
+	return _win;
 }
 
 std::string Controller::getName() const{
 	return _name;
-=======
+}
+
 void Controller::init_game(void)
 {
-	this->player = new Character("player", 10, 10);
-
+	Ship player("player", 10, 10);
 }
 
 void Controller::check_colision(void)
@@ -55,23 +56,23 @@ void Controller::userinput(void)
 	switch(ch)
 	{
 		case KEY_LEFT:
-			mvwaddch(this->win, this->player->getY(), this->player->getX(), ' ');
-			this->player->moveLeft();
+			mvwaddch(_win, player.getY(), player.getX(), ' ');
+			player.moveLeft();
 			break;
 
 		case KEY_RIGHT:
-			mvwaddch(this->win, this->player->getY(), this->player->getX(), ' ');
-			this->player->moveRight();
+			mvwaddch(_win, player.getY(), player.getX(), ' ');
+			player.moveRight();
 			break;
 
 		case KEY_UP:
-			mvwaddch(this->win, this->player->getY(), this->player->getX(), ' ');
-			this->player->moveUp();
+			mvwaddch(_win, player.getY(), player.getX(), ' ');
+			player.moveUp();
 			break;
 
 		case KEY_DOWN:
-			mvwaddch(this->win, this->player->getY(), this->player->getX(), ' ');
-			this->player->moveDown();
+			mvwaddch(_win, player.getY(), player.getX(), ' ');
+			player.moveDown();
 			break;
 		case 32:
 			break;

@@ -3,16 +3,24 @@
 
 #include <iostream>
 #include <curses.h>
+#include "Character.class.hpp"
+#include "Ship.class.hpp"
 
 class Controller
 {
 	public:
+		Ship player;
 		Controller();
 		Controller(WINDOW * win);
 		Controller(Controller const & src);
 		~Controller();
 		std::string getName() const;
 		WINDOW * getField();
+		void init_game( void );
+		void check_colision(void);
+		void userinput(void);
+		void refresh_map(void);
+		void draw_char(WINDOW *win, Character const  & ship);
 
 		Controller & operator=(Controller const & rhs);
 
