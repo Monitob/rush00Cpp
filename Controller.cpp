@@ -7,18 +7,18 @@
 #include "Ship.class.hpp"
 #include "Enemy.class.hpp"
 
-Controller::Controller()// : missiles(new Missiles*[100])
+Controller::Controller() : missiles(new Missiles*[100])
 {
+	for (int i = 0 ; i < 100 ; i++)
+		missiles[i] = NULL;
 	initscr();
 	noecho();
 	curs_set(FALSE);
 	_win = newwin(MAX_Y , MAX_X, 2, 0);
 	keypad(stdscr, TRUE);
-	//mvwprintw(_win, 1, 1, "Field");
 	_name = "Shooter Game Win";
 	box(_win, 0, 0);
 	nodelay(stdscr, TRUE);
-	//sleep(1);
 	inter = new Interface;
 	player = new Ship;
 	initGame();
@@ -34,6 +34,7 @@ void Controller::initGame(){
 
 	endGame = 42;
 	Enemy *e = new Enemy();
+	//Missiles **missiles = new Missiles*[100]();
 	while (endGame != 113){
 		endGame = userinput();
 		if(timer++ % 5 == 0)
@@ -43,6 +44,8 @@ void Controller::initGame(){
 			if(!e->isDead())
 				inter->draw_char(_win, *e, 'X');
 		}
+		if(timer++ % 2 == 0)
+			move_missiles();
 		inter->draw_char(_win, *player, '@');
 		wrefresh(_win);
 		usleep(20000);
@@ -52,31 +55,44 @@ void Controller::initGame(){
 Controller & Controller::operator=(Controller const & rhs) {
 	if (this != &rhs)
 	{
-			inter = rhs.inter;
+		inter = rhs.inter;
 	}
 	return (*this);
 }
 
-// void Controller::pushMissile(Missiles *& missiles)
-// {
-// 	for (int i = 0; i < 100 ; ++i)
-// 	{
-// 		if (!missiles[i])
-// 		{
-// 			missiles[i] = missiles;
-// 			break ;
-// 		}
-// 	}
-// }
+void Controller::move_missiles()
+{
+	for(int i = 0; i < 100; i++)
+    {
+    	if (missiles[i])
+    	{
+    		mvwaddch(_win, missiles[i]->getY(), missiles[i]->getX(), ' ');
+    		missiles[i]->setX(missiles[i]->getX() + 1);
+    		mvwaddch(_win, missiles[i]->getY(), missiles[i]->getX(), '-');
+    	}
+    }
+}
 
-// void Controller::deleteMissile(int const index)
-// {
-// 	if (missiles[index])
-// 	{
-// 		delete missiles[index];
-// 		missiles[index] = NULL;
-// 	}
-// }
+void Controller::pushMissile(Missiles *& missile)
+{
+	for (int i = 0; i < 100 ; ++i)
+	{
+		if (missiles[i] == NULL)
+		{
+			missiles[i] = missile;
+			break ;
+		}
+	}
+}
+
+void Controller::deleteMissile(int const index)
+{
+	if (missiles[index])
+	{
+		delete missiles[index];
+		missiles[index] = NULL;
+	}
+}
 
 
 Controller::Controller(WINDOW * win): _win(win){
@@ -105,6 +121,7 @@ std::string Controller::getName() const{
 int Controller::userinput(void)
 {
 	int ch = 42;
+	Missiles *m = NULL;
 
 	ch = getch();
 	switch(ch)
@@ -129,8 +146,9 @@ int Controller::userinput(void)
 			player->moveDown();
 			return 3;
 		case 32:
-			// Missiles *m = player->shoot();
-			// PushMissile(m);
+			m = player->shoot();
+			pushMissile(m);
+			mvwaddch(_win, m->getY(), m->getX(), '-');
 			return 4;
 		case 81:
 			return 5;

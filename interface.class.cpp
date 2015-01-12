@@ -29,7 +29,6 @@ Interface::Interface(Interface const & src)
 
 Interface::~Interface()
 {
-
 }
 
 Interface & Interface::operator=(Interface const & rhs) {

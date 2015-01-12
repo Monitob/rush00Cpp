@@ -8,6 +8,7 @@
 #include <iostream>
 #include "Enemy.class.hpp"
 #include "Ship.class.hpp"
+#include "missiles.class.hpp"
 
 class Interface {
 

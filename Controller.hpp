@@ -31,6 +31,7 @@ class Controller
 
 		void pushMissile(Missiles *& missiles);
 		void deleteMissile(int const index);
+		void move_missiles();
 
 	private:
 		WINDOW *_win;
